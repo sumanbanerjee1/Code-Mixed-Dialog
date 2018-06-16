@@ -20,3 +20,28 @@ There are two baseline models for this dataset:
 The baseline models  are provided in the code directory. Before running them you need to preprocess the data using the `preprocess.py` file in the respective baseline directory. The preprocessing is different for both the baselines. You need to provide the source directory in which the train, dev and test data files are and the target directory where the preprocessed files will be dumped:
 
 * `python preprocess.py --source_dir ../../data/hindi --target_dir ../../data/hindi`
+
+### Training
+
+The models can be trained using `train_seq2seq.py` and `train_hred.py` files in the code directory. The arguments required are:
+* config_id: The experiment number.
+* data_dir: The directory in which the preprocessed files are dumped (The `target_dir` in preprocessing step)
+* infer_data: The dataset split(train, dev or test) on which inference should be performed.
+* logs_dir: The directory in which log files should be dumped.
+* checkpoint_dir: The directory in which model checkpoints should be stored.
+* rnn_unit: The cell type (GRU or LSTM) to be used for the RNNs.
+* learning_rate: The initial learning rate for Adam.
+* batch_size: The mini batch size to be used for optimimzation.
+* epochs: The maximum number of epochs to train.
+* max_gradient_norm: The maximum norm of the gradients to be used for gradient clipping.
+* dropout: The keep probability of RNN units.
+* num_layers: The number of layers of RNN to be used for encoding.
+* word_emb_dim: The size of the word embeddings to be used for input to the RNN.
+* hidden_units: The size of RNN cell hidden units.
+* eval_interval: The number of epochs after which validation is to be performed on the dev set.
+* patience: The patience parameter for early stopping.
+* train: To run the model in train mode or test mode. `True` means train mode is on.
+* debug: To run the code in debug mode or not. In debug mode the code runs on a smaller dataset (67 examples) for only 2 epochs. `True` means debug mode is on.
+
+To run the training use:
+* `python train_seq2seq.py --config_id 1 --data_dir .../data/hindi --infer_data test --logs_dir logs --checkpoint_dir checkpoints --rnn_unit gru --learning_rate 0.0004 --batch_size 32 --epochs 50 --max_gradient_norm 5 --dropout 0.75 --num_layers 1 --word_emb_dim 300 --hiden_units 350 --eval_interval 1 --patience 5 --train True --debug False`
