@@ -44,4 +44,4 @@ The models can be trained using `train_seq2seq.py` and `train_hred.py` files in 
 * debug: To run the code in debug mode or not. In debug mode the code runs on a smaller dataset (67 examples) for only 2 epochs. `True` means debug mode is on.
 
 To run the training use:
-* `python train_seq2seq.py --config_id 1 --data_dir .../data/hindi --infer_data test --logs_dir logs --checkpoint_dir checkpoints --rnn_unit gru --learning_rate 0.0004 --batch_size 32 --epochs 50 --max_gradient_norm 5 --dropout 0.75 --num_layers 1 --word_emb_dim 300 --hiden_units 350 --eval_interval 1 --patience 5 --train True --debug False`
+* `python train_seq2seq.py --config_id 1 --data_dir ../data/hindi --infer_data test --logs_dir logs --checkpoint_dir checkpoints --rnn_unit gru --learning_rate 0.0004 --batch_size 32 --epochs 50 --max_gradient_norm 5 --dropout 0.75 --num_layers 1 --word_emb_dim 300 --hiden_units 350 --eval_interval 1 --patience 5 --train True --debug False`
