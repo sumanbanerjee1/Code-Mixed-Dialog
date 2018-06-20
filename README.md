@@ -56,7 +56,7 @@ To just run inference on the test set use the `train` flag as `False` :
 * `python train_seq2seq.py --config_id 1 --data_dir ../data/hindi --infer_data test --logs_dir logs --checkpoint_dir checkpoints --rnn_unit gru --learning_rate 0.0004 --batch_size 32 --epochs 50 --max_gradient_norm 5 --dropout 0.75 --num_layers 1 --word_emb_dim 300 --hiden_units 350 --eval_interval 1 --patience 5 --train False --debug False`
 
 ### Evaluation
-The file `get_scores.py` in the `scores` directory produces the BLEU (moses and pycoco), ROUGE, per-response accuracy and the per-dialogue accuracy. We used the BLEU scripts from [Google's seq2seq repo](https://github.com/google/seq2seq/tree/master/seq2seq/metrics) for the moses BLEU and the scripts from [Microsoft COCO Caption Evaluation](https://github.com/tylin/coco-caption/tree/master/pycocoevalcap) for pycoco BLEU. It requires 3 arguments:
+The file `get_scores.py` in the `scores` directory produces the BLEU (moses and pycoco), ROUGE, per-response accuracy and the per-dialogue accuracy. We used the BLEU scripts from [Google's seq2seq repo](https://github.com/google/seq2seq/tree/master/seq2seq/metrics) for the moses BLEU and the scripts from [Microsoft COCO Caption Evaluation](https://github.com/tylin/coco-caption/tree/master/pycocoevalcap) for pycoco BLEU. It requires the following 3 arguments:
 * --preds_path: The directory where the inference on the test set has dumped its predictions file and labels file.
 * --config_id: The experiment number which is appended to the predictions' filename and labels' filename.
 * --lang: Can be one of 'english', 'hindi', 'bengali', 'gujarati' and 'tamil'.
